@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
 /**
  * format_handler - Prints to stdout based on the character passed
  * @vargs: The list of variable arguments to print from
@@ -9,6 +8,8 @@
  */
 int format_handler(char fchar, va_list vargs)
 {
+	int counter;
+
 	/*check for fchar and call its func*/
 	if (fchar == 'c' || fchar == '%')
 		return (print_char(va_arg(vargs, int)));
@@ -21,7 +22,6 @@ int format_handler(char fchar, va_list vargs)
 		unsigned int num;
 
 		num = va_arg(vargs, unsigned int);
-		int counter;
 
 		counter = print_bin(num);
 
