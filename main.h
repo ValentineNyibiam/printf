@@ -5,7 +5,7 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include <unistd.h>
-
+#include <stdlib.h>
 
 /* Protoypes */
 int _printf(const char *format, ...);
