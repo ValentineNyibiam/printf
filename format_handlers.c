@@ -19,13 +19,13 @@ int format_handler(char fchar, va_list vargs)
 	else if ((fchar == 'b'))
 	{
 		unsigned int num;
+		int count;
 
 		num = va_arg(vargs, unsigned int);
-		int counter;
 
-		counter = print_bin(num);
+		count = print_bin(num);
 
-		return (counter);
+		return (count);
 	}
 	/* return -1 to indicate unmatching datatype */
 	return (-1);
