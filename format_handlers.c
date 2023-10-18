@@ -72,7 +72,7 @@ int print_num(int num)
 {
 	/* Initialize and assign variables */
 	int num_digit, num_renew, num_div = 1, num_out = 0, ncount = 0;
-	
+
 	/* Check if num is positive or negative */
 	if (num < 0)
 	{
@@ -83,14 +83,14 @@ int print_num(int num)
 	else
 		num_digit = num;
 	num_renew = num_digit;
-	
+
 	/* Check for the number of digits */
 	while (num_digit > 9)
 	{
 		num_div *= 10;
 		num_digit /= 10;
 	}
-	
+
 	/* Print the integer to the stdout */
 	while (num_div >= 1)
 	{
@@ -99,7 +99,6 @@ int print_num(int num)
 		num_div /= 10;
 		ncount++;
 	}
-	
+
 	return (ncount);
 }
-
