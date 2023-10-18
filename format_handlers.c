@@ -15,8 +15,10 @@ int format_handler(va_list vargs, char fchar)
 		return (print_char(va_arg(vargs, int)));
 	else if (fchar == '%')
 		return (print_char('%'));
-	else
-		return (-1);
+	else if (fchar == 'd' || fchar == 'i')
+		return (print_num(va_arg(vargs, int)));
+
+	return (-1);
 }
 
 /**
@@ -56,3 +58,45 @@ int print_char(char ch)
 {
 	return (write(1, &ch, 1));
 }
+
+/**
+ * print_num - Prints a number to the stdout
+ * @num: The number to be printed to the stdout
+ *
+ * Return: Number of characters of the printed number
+ */
+int print_num(int num)
+{
+	/* Initialize and assign variables */
+	int num_digit, num_renew, num_div = 1, num_out = 0, ncount = 0;
+	
+	/* Check if num is positive or negative */
+	if (num < 0)
+	{
+		ncount++;
+		print_char('-');
+		num_digit = -num;
+	}
+	else
+		num_digit = num;
+	num_renew = num_digit;
+	
+	/* Check for the number of digits */
+	while (num_digit > 9)
+	{
+		num_div *= 10;
+		num_digit /= 10;
+	}
+	
+	/* Print the integer to the stdout */
+	while (num_div >= 1)
+	{
+		num_out = (num_renew / num_div) % 10;
+		print_char(num_out + 48);
+		num_div /= 10;
+		ncount++;
+	}
+	
+	return (ncount);
+}
+
