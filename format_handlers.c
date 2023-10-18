@@ -77,16 +77,16 @@ int print_num(int num, int sign_check)
 
 	/* Check if num is positive or negative */
 	if(!sign_check)
-		num_digit = (unsigned int)num;
+		num_renew = (unsigned int)num;
 	else if (num < 0)
 	{
 		ncount++;
 		print_char('-');
-		num_digit = -num;
+		num_renew = -num;
 	}
 	else
-		num_digit = num;
-	num_renew = num_digit;
+		num_renew = num;
+	num_digit = num_renew;
 
 	/* Check for the number of digits */
 	while (num_digit > 9)
