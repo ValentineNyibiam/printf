@@ -2,8 +2,8 @@
 
 /**
  * format_handler - Handles format specifiers
- * @ch: Character that determines the how to handle the variable argument
- * @va_list: The variable argument to format and print
+ * @fchar: Character that determines the how to handle the variable argument
+ * @vargs: The variable argument to format and print
  *
  * Return: The number of characters printed to stdout
  */
