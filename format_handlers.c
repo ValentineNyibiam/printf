@@ -16,9 +16,7 @@ int format_handler(va_list vargs, char fchar)
 	else if (fchar == '%')
 		return (print_char('%'));
 	else if (fchar == 'd' || fchar == 'i')
-		return (print_num(va_arg(vargs, int), 1));
-	else if (fchar == 'u')
-		return (print_num(va_arg(vargs, int), 0));
+		return (print_num(va_arg(vargs, int)));
 
 	return (-1);
 }
@@ -67,19 +65,16 @@ int print_char(char ch)
 /**
  * print_num - Prints a number to the stdout
  * @num: The number to be printed to the stdout
- * @sign_check: Determinant if num is signed or unsigned
  *
  * Return: Number of characters of the printed number
  */
-int print_num(int num, int sign_check)
+int print_num(int num)
 {
 	/* Initialize and assign variables */
-	unsigned int num_digit, num_renew, num_div = 1, num_out = 0, ncount = 0;
+	int num_digit, num_renew, num_div = 1, num_out = 0, ncount = 0;
 
 	/* Check if num is positive or negative */
-	if (!sign_check)
-		num_renew = (unsigned int)num;
-	else if (num < 0)
+	if (num < 0)
 	{
 		ncount++;
 		print_char('-');
