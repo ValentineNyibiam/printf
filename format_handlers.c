@@ -45,6 +45,9 @@ int _strlen(char *str)
  */
 int print_string(char *str)
 {
+	if (!str)
+		str == "(nil)";
+
 	return (write(1, str, _strlen(str)));
 }
 
