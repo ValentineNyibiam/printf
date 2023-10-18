@@ -11,25 +11,27 @@
 int _printf(const char *format, ...)
 {
 	/* Declare and initalize variables */
-	int i, fcount = 0;
+	int fcount = 0, i;
 	va_list vargs;
 
-	va_start(vargs, format);
-
-	/* Check if format is NULL */
-	if (format == NULL)
+	if (!format || (*format == '%' && *(format + 1) == '\0'))
 		return (-1);
 
+	/* Check if format is NULL */
+	if (!(*format))
+		return (fcount);
+
 	/* Parse format string to print */
+	va_start(vargs, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] != '%')
-			fcount += print_char(format[i]);
-		else if (format[i] == '%')
+		if (format[i] == '%')
 		{
-			format++;
-			fcount += format_handler(format[i], vargs);
+			i++;
+			fcount += format_handler(vargs, format[i]);
 		}
+		else
+			fcount += print_char(format[i]);
 	}
 
 	/* Free va_list */
@@ -37,17 +39,4 @@ int _printf(const char *format, ...)
 
 	/* Return the number of characters printed */
 	return (fcount);
-}
-
-/**
- * print_char - Prints a character to the stdout
- * @ch: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately
- */
-int print_char(char ch)
-{
-	return (write(1, &ch, 1));
-
 }
