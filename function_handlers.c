@@ -88,3 +88,34 @@ int print_octal(unsigned int num)
 
 	return (octal_count);
 }
+
+/**
+ * print_hex - Prints hexadecimal in lower cases
+ * @num: The number to convert to
+ * Return: The size of nun
+ */
+int print_hex(unsigned int num)
+{
+	char hex[32];
+	int i, hex_count;
+
+	if (num == 0)
+		return (print_char('0'));
+
+	char hexChars[] = "0123456789abcdef";
+
+	i = 0;
+	while (num > 0)
+	{
+		hex[i++] = hexChars[num % 16];
+		num /= 16;
+	}
+
+	hex_count = 0;
+	while (i > 0)
+	{
+		hex_count += print_char(hex[--i]);
+	}
+
+	return (hex_count);
+}

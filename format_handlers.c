@@ -29,6 +29,10 @@ int format_handler(va_list vargs, char fchar)
 		return (print_octal(va_arg(vargs, unsigned int)));
 	else if (fchar == 'u')
 		return (print_ui(va_arg(vargs, unsigned int)));
+	else if (fchar == 'x')
+		return (print_hex(va_arg(vargs, unsigned int)));
+	else if (fchar == 'X')
+		return (print_Hex(va_arg(vargs, unsigned int)));
 
 	return (print_char('%') + print_char(fchar));
 }
