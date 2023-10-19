@@ -12,8 +12,9 @@ int format_handler(va_list vargs, char fchar)
 	if (fchar == 's')
 	{
 		char *strings = va_arg(vargs, char *);
+
 		if (strings == NULL)
-			return(print_string("(null)"));
+			return (print_string("(null)"));
 		return (print_string(strings));
 	}
 	else if (fchar == 'c')
