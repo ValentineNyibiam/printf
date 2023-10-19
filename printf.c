@@ -14,12 +14,9 @@ int _printf(const char *format, ...)
 	int fcount = 0, i;
 	va_list vargs;
 
-	if (!format || (*format == '%' && *(format + 1) == '\0'))
-		return (-1);
-
 	/* Check if format is NULL */
 	if (!(*format))
-		return (fcount);
+		return (-1);
 
 	/* Parse format string to print */
 	va_start(vargs, format);

@@ -10,7 +10,12 @@
 int format_handler(va_list vargs, char fchar)
 {
 	if (fchar == 's')
-		return (print_string(va_arg(vargs, char *)));
+	{
+		char *strings = va_arg(vargs, char *);
+		if (strings == NULL)
+			return(print_string("(null)"));
+		return (print_string(strings));
+	}
 	else if (fchar == 'c')
 		return (print_char(va_arg(vargs, int)));
 	else if (fchar == '%')
@@ -18,7 +23,7 @@ int format_handler(va_list vargs, char fchar)
 	else if (fchar == 'd' || fchar == 'i')
 		return (print_num(va_arg(vargs, int)));
 
-	return (-1);
+	return (print_char('%') + print_char(fchar));
 }
 
 /**
