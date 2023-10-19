@@ -97,12 +97,11 @@ int print_octal(unsigned int num)
 int print_hex(unsigned int num)
 {
 	char hex[32];
+	char hexChars[] = "0123456789abcdef";
 	int i, hex_count;
 
 	if (num == 0)
 		return (print_char('0'));
-
-	char hexChars[] = "0123456789abcdef";
 
 	i = 0;
 	while (num > 0)

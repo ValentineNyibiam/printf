@@ -9,14 +9,13 @@ int print_Hex(unsigned int num)
 {
 	char Hex[32];
 	int i, Hex_count;
+	char Hexchars[] = "0123456789ABCDEF";
 
 	if (num == 0)
 		return (print_char('0'));
 
-	char Hexchars[] = "0123456789ABCDEF";
-
 	i = 0;
-	while (num < 0)
+	while (num != 0)
 	{
 		Hex[i++] = Hexchars[num % 16];
 		num /= 16;
