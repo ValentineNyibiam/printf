@@ -23,6 +23,12 @@ int format_handler(va_list vargs, char fchar)
 		return (print_char('%'));
 	else if (fchar == 'd' || fchar == 'i')
 		return (print_num(va_arg(vargs, int)));
+	else if (fchar == 'b')
+		return (print_binary(va_arg(vargs, unsigned int)));
+	else if (fchar == 'o')
+		return (print_octal(va_arg(vargs, unsigned int)));
+	else if (fchar == 'u')
+		return (print_ui(va_arg(vargs, unsigned int)));
 
 	return (print_char('%') + print_char(fchar));
 }
